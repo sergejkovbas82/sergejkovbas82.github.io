@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+   
+    <head> 
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+           ym(51606395, "init", {
+                id:51606395,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+           });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/51606395" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+       
+        <title>Установить</title>
+        <meta name="description" content="Установить"> 
+        <meta charset="utf-8"/> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <link rel="shortcut icon" href="favicon.png" type="image/png">
+        <link rel="manifest" href="manifest.json"/> 
+        <script src="scripts/pwacompat.min.js"></script> 
+    </head>
+    
+    <style>
+        body {
+            background: url(src/bg.jpg);
+        }
+        .fig {
+            display: block;
+            text-align: center;
+            margin-top: 45%;
+            color: aliceblue;
+            font-family: sans-serif;
+        }
+    </style>
+    
+    <body> 
+        <div class="fig">
+            <img src="src/biglogo.gif" alt="logo">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h5 id="wait">Подождите пожалуйста</h5>
+            <img id="install" style="visibility: hidden;" id="install" src="src/btn.png" alt="btn">
+        </div>
+        <script>
+            if ('serviceWorker' in navigator)
+            {
+                navigator.serviceWorker.register('sw.js', {scope: '/'}).then(function (registration){}); 
+                navigator.serviceWorker.ready.then(function (registration){});
+            }
+        </script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>
