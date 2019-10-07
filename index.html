@@ -18,7 +18,6 @@
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/51606395" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
-       
         <title>Установить</title>
         <meta name="description" content="Установить"> 
         <meta charset="utf-8"/> 
@@ -26,39 +25,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
         <link rel="shortcut icon" href="favicon.png" type="image/png">
         <link rel="manifest" href="manifest.json"/> 
-        <script src="scripts/pwacompat.min.js"></script> 
+        <!-- <script src="scripts/pwacompat.min.js"></script>  -->
     </head>
     
     <style>
-        body {
-            background: url(src/bg.jpg);
+        html, body {
+            min-height: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
         }
+        
         .fig {
             display: block;
             text-align: center;
-            margin-top: 45%;
-            color: aliceblue;
             font-family: sans-serif;
+            margin: 0px;
+            padding: 25%;
+        }
+        
+        h5 {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        p {
+            margin: 0px;
+            padding: 0px;
         }
     </style>
     
     <body> 
         <div class="fig">
-            <img src="src/biglogo.gif" alt="logo">
-            <br>
-            <br>
-            <br>
-            <br>
+            <!-- <img src="src/biglogo.gif" alt="logo">  -->
+            <p id="log">log: </p>
             <h5 id="wait">Подождите пожалуйста</h5>
             <img id="install" style="visibility: hidden;" id="install" src="src/btn.png" alt="btn">
         </div>
-        <script>
-            if ('serviceWorker' in navigator)
-            {
-                navigator.serviceWorker.register('sw.js', {scope: '/'}).then(function (registration){}); 
-                navigator.serviceWorker.ready.then(function (registration){});
-            }
-        </script>
-        <script src="scripts/main.js"></script>
     </body>
+
+    <script>
+        
+        function yourCustomLog(msg) {
+            document.getElementById('log').innerHTML += '<br>' + msg;
+        }
+
+        window.console.log = yourCustomLog;
+            
+        if ('serviceWorker' in navigator)
+        {
+            console.log(navigator.serviceWorker);
+            navigator.serviceWorker.register('sw.js', {scope: '/'}).then(function (registration){
+                console.log("sw register");
+            }); 
+            navigator.serviceWorker.ready.then(function (registration){
+                console.log("sw ready");
+            });
+            window.Notification.requestPermission();
+        }
+    </script>
+    <script src="scripts/main.js"></script>
+    
 </html>
